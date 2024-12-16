@@ -1,0 +1,16 @@
+*
+!.gitignore
+
+!library.json
+!platformio.ini
+!keywords.txt
+!readme.md
+!LICENSE
+
+# Allowed folders
+!src/
+!src/**
+!test
+!test/**
+!examples
+!examples/**

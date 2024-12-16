@@ -27,5 +27,6 @@ jobs:
           platformio update
       - name: Run test
         run: |
+          git --version 
           pio test -e test
       

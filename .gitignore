@@ -10,6 +10,9 @@
 # Allowed folders
 !src/
 !src/**
+!src/**
+!src/internal/
+!src/internal/**
 !test
 !test/**
 !examples

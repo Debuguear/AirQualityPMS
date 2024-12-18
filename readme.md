@@ -1,6 +1,17 @@
 
+## Intall library
+
+Add the entry in hte platformio.ini file
+
+```ini
+[env]
+lib_deps =
+  https://github.com/Debuguear/AirQualityPMS.git
+
+```
 
 ## Usage
+
 
 
 ### PMS5003T Sensor

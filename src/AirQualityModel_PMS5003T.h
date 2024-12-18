@@ -1,11 +1,11 @@
-#ifndef AIR_QUALITY_SENSOR_DATA_H
-#define AIR_QUALITY_SENSOR_DATA_H
-#include <Arduino.h>
-
+#ifndef AIR_QUALITY_SENSOR_MODEL_PMS5003T_H
+#define AIR_QUALITY_SENSOR_MODEL_PMS5003T_H
+#include "DataAdapterBase.h"
 
 namespace debuguear {
+    
 
-    struct AirQualityModel {
+    struct AirQualityModel_PMS5003T {
         
         uint16_t pm10_standard, pm25_standard, pm100_standard; // refers PM1.0, PM2.5 , PM10 concentration unit μ g/m³ （CF=1，standard particle）
         uint16_t pm10_env, pm25_env, pm100_env; // refers to PM1.0, PM2.5  concentration unit μ g/m3（under atmospheric environment）
@@ -79,6 +79,25 @@ namespace debuguear {
             return result;
         }
     };
+
+    class AdapterPMS5003T: public SensorDataAdapterBase<uint16_t, 12, AirQualityModel_PMS5003T> {
+        public:
+            void adapt(const uint16_t (&data)[12], AirQualityModel_PMS5003T *dst) override {
+                dst->pm10_standard = data[0];
+                dst->pm25_standard = data[1];
+                dst->pm100_standard = data[2];
+                dst->pm10_env = data[3];
+                dst->pm25_env = data[4];
+                dst->pm100_env = data[5];
+                dst->particles_03um = data[6];
+                dst->particles_05um = data[7];
+                dst->particles_10um = data[8];
+                dst->particles_25um = data[9];
+                dst->temperature = data[10];
+                dst->humedity = data[11];
+            }
+    };
+
 }
 
 #endif

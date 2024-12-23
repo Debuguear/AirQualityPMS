@@ -1,21 +1,3 @@
-*
-!.gitignore
-
-!library.json
-!platformio.ini
-!keywords.txt
-!readme.md
-!LICENSE
-
-# Allowed folders
-!src/
-!src/**
-!src/**
-!src/internal/
-!src/internal/**
-!test
-!test/**
-!examples
-!examples/**
-!.github/
-!.github/**
+.*
+lib/
+include/

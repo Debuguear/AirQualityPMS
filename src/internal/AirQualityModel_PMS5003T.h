@@ -1,6 +1,8 @@
 #ifndef AIR_QUALITY_SENSOR_MODEL_PMS5003T_H
 #define AIR_QUALITY_SENSOR_MODEL_PMS5003T_H
+#define PMS5003T_DATA_BLOCKS 12
 #include "DataAdapterBase.h"
+
 
 namespace debuguear {
     
@@ -80,9 +82,9 @@ namespace debuguear {
         }
     };
 
-    class AdapterPMS5003T: public SensorDataAdapterBase<uint16_t, 12, AirQualityModel_PMS5003T> {
+    class AdapterPMS5003T: public SensorDataAdapterBase<uint16_t, PMS5003T_DATA_BLOCKS, AirQualityModel_PMS5003T> {
         public:
-            void adapt(const uint16_t (&data)[12], AirQualityModel_PMS5003T *dst) override {
+            void adapt(const uint16_t (&data)[PMS5003T_DATA_BLOCKS], AirQualityModel_PMS5003T *dst) override {
                 dst->pm10_standard = data[0];
                 dst->pm25_standard = data[1];
                 dst->pm100_standard = data[2];

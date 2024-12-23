@@ -1,5 +1,5 @@
 
-## Intall library
+## Install the library
 
 Add the entry in hte platformio.ini file
 

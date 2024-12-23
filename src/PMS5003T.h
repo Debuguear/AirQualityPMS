@@ -1,8 +1,8 @@
 
 #ifndef AIR_QUALITY_SENSOR_PMS5003T_HELPERS_H
 #define AIR_QUALITY_SENSOR_PMS5003T_HELPERS_H
-#include "AirQualityModel_PMS5003T.h"
-#include "AirQualityPMS.h"
+#include "./internal/AirQualityModel_PMS5003T.h"
+#include "./internal/AirQualityPMSProcessor.h"
 
 
 namespace debuguear {
@@ -31,7 +31,7 @@ namespace debuguear {
      * ```
      * 
      */
-    PMS5003T_PROCESSOR_T& pms5003TProcessor(Stream &sensorStream, size_t max_observers) {
+    PMS5003T_PROCESSOR_T& pms5003TProcessor(Stream *sensorStream, size_t max_observers) {
         static PMS5003T_PROCESSOR_T airQualitySensor(sensorStream, adapterPMS5003T, max_observers);
         return airQualitySensor;
     }

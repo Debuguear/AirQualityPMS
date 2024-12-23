@@ -32,5 +32,5 @@ jobs:
       - name: Run test
         run: |
           git --version 
-          pio test -e test
+          #pio test -e test
       

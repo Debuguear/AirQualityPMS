@@ -16,8 +16,12 @@ public:
         return (size - position);
     }
 
-    size_t readBytes(uint8_t *buffer, size_t length) {
-
+    size_t readBytes(uint8_t* buffer, size_t length) {
+        size_t bytesRead = 0;
+        while (bytesRead < length && available()) {
+            buffer[bytesRead++] = read();
+        }
+        return bytesRead; // Ensure return value
     }
 
     int read() override {

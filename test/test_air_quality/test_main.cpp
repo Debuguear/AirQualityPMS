@@ -38,7 +38,7 @@ void observerFunction(debuguear::AirQualityModel_PMS5003T* data) {
 
 void test_pms5003t_processor_loop() {
     FakeStream fakeSerial(validFrame, sizeof(validFrame));
-    debuguear::PMS5003T_PROCESSOR_T processor = debuguear::pms5003TProcessor(fakeSerial, (size_t)1);
+    debuguear::PMS5003T_PROCESSOR_T processor = debuguear::pms5003TProcessor(&fakeSerial, (size_t)1);
     processor.addObserver(observerFunction);
     processor.loop();
     TEST_ASSERT_TRUE(observerWasCalled);
@@ -47,9 +47,9 @@ void test_pms5003t_processor_loop() {
 
 
 void test_pms5003t_processor_read_frame() {
-    debuguear::PMS5003T_PROCESSOR_T processor = debuguear::pms5003TProcessor(Serial, 0);
+    debuguear::PMS5003T_PROCESSOR_T processor = debuguear::pms5003TProcessor(&Serial, 0);
     
-    bool result = processor.readFrame(validFrame, &PMS5003TData);
+    bool result = processor.processFrame(validFrame, &PMS5003TData);
     TEST_ASSERT_TRUE(result);
     TEST_ASSERT_EQUAL_UINT16(50, PMS5003TData.pm10_env);
     TEST_ASSERT_EQUAL_UINT16(2, PMS5003TData.humedity);

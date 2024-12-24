@@ -20,7 +20,7 @@ lib_deps =
 #include "PMS5003T.h"
 
 SoftwareSerial pmsSerial(2, 3);
-debuguear::PMS5003T_PROCESSOR_T processor = debuguear::pms5003TProcessor(pmsSerial);
+debuguear::PMS5003T_PROCESSOR_T processor = debuguear::pms5003TProcessor(&pmsSerial);
 
 void observerFunction(debuguear::AirQualityModel_PMS5003T* data) {
     Serial.println("Observer called!");
